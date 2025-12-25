@@ -24,7 +24,7 @@ jobs:
     
     - name: Fix Android structure
       run: |
-        # Просто создаем новую структуру Android
+        # Пересоздаем Android структуру
         rm -rf android
         flutter create --org com.example --platforms=android --project-name notes_app .
     
@@ -35,7 +35,7 @@ jobs:
       run: flutter build apk --release --no-shrink
     
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # ← ИЗМЕНИЛОСЬ С v3 НА v4
       with:
         name: app-release
         path: build/app/outputs/flutter-apk/app-release.apk
