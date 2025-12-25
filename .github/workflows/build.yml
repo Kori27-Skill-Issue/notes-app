@@ -26,16 +26,14 @@ jobs:
     
     - name: Fix Android structure
       run: |
-        # Создаем правильную структуру Android
         mkdir -p android/app/src/main/kotlin/com/example/notes_app
         echo 'package com.example.notes_app
-
+        
 import io.flutter.embedding.android.FlutterActivity
-
+        
 class MainActivity: FlutterActivity() {
 }' > android/app/src/main/kotlin/com/example/notes_app/MainActivity.kt
         
-        # Обновляем AndroidManifest.xml
         echo '<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
@@ -64,7 +62,6 @@ class MainActivity: FlutterActivity() {
     </application>
 </manifest>' > android/app/src/main/AndroidManifest.xml
         
-        # Обновляем build.gradle
         sed -i 's/ndkVersion flutter.ndkVersion//g' android/app/build.gradle
     
     - name: Install dependencies
